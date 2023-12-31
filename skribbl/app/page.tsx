@@ -25,12 +25,15 @@ const page: FC<pageProps> = () => {
   }
   return (
     <>
-      <div className="w-screen h-screen bg-white flex justify-center items-center">
-        <div className="flex flex-col">
-          <button onClick={clearCanvas} className="bg-black">
-            Clear
-          </button>
+      <div className="w-screen h-screen bg-white flex justify-center items-center gap-2">
+        <div className="flex flex-col gap-2">
           <ChromePicker color={color} onChange={(e) => setColor(e.hex)} />
+          <button
+            onClick={clearCanvas}
+            className="bg-purple-400 border-black rounded-md"
+          >
+            Clear Canvas
+          </button>
         </div>
         <canvas
           height={450}
