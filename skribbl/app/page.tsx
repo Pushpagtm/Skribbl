@@ -6,7 +6,7 @@ interface pageProps {}
 
 const page: FC<pageProps> = () => {
   const [color, setColor] = useState("#000");
-  const { canvasRef, onMouseDown } = useDraw(drawLine);
+  const { canvasRef, onMouseDown, clearCanvas } = useDraw(drawLine);
   function drawLine({ currentPoint, prevPoint, ctx }: Draw) {
     const { x: currX, y: currY } = currentPoint;
     const lineColor = color;
@@ -24,16 +24,23 @@ const page: FC<pageProps> = () => {
     ctx.fill();
   }
   return (
-    <div className="w-screen h-screen bg-white flex justify-center items-center">
-      <ChromePicker color={color} onChange={(e) => setColor(e.hex)} />
-      <canvas
-        height={550}
-        width={550}
-        className="border border-black rounded-md"
-        ref={canvasRef}
-        onMouseDown={onMouseDown}
-      />
-    </div>
+    <>
+      <div className="w-screen h-screen bg-white flex justify-center items-center">
+        <div className="flex flex-col">
+          <button onClick={clearCanvas} className="bg-black">
+            Clear
+          </button>
+          <ChromePicker color={color} onChange={(e) => setColor(e.hex)} />
+        </div>
+        <canvas
+          height={450}
+          width={450}
+          className="border border-black rounded-md"
+          ref={canvasRef}
+          onMouseDown={onMouseDown}
+        />
+      </div>
+    </>
   );
 };
 
