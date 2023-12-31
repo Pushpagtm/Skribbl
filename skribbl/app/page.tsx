@@ -1,14 +1,15 @@
+"use client";
 import { useDraw } from "@/hooks/useDraw";
 import { FC } from "react";
 
 interface pageProps {}
 
 const page: FC<pageProps> = () => {
-  const { canvasRef } = useDraw(drawLine);
+  const { canvasRef, onMouseDown } = useDraw(drawLine);
   function drawLine({ currentPoint, prevPoint, ctx }: Draw) {
     const { x: currX, y: currY } = currentPoint;
     const lineColor = "#000";
-    const lineWidth = 5;
+    const lineWidth = 3;
     let startPoint = prevPoint ?? currentPoint;
     ctx.beginPath;
     ctx.lineWidth = lineWidth;
@@ -18,7 +19,7 @@ const page: FC<pageProps> = () => {
     ctx.stroke();
     ctx.fillStyle = lineColor;
     ctx.beginPath();
-    ctx.arc(startPoint.x, startPoint.y, 2, 0, 2 * Math.PI);
+    // ctx.arc(startPoint.x, startPoint.y, 2, 0, 2 * Math.PI);
     ctx.fill();
   }
   return (
@@ -28,6 +29,7 @@ const page: FC<pageProps> = () => {
         width={550}
         className="border border-black rounded-md"
         ref={canvasRef}
+        onMouseDown={onMouseDown}
       />
     </div>
   );
