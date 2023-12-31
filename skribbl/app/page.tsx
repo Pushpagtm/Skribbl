@@ -1,14 +1,15 @@
 "use client";
 import { useDraw } from "@/hooks/useDraw";
-import { FC } from "react";
-
+import { FC, useState } from "react";
+import { ChromePicker } from "react-color";
 interface pageProps {}
 
 const page: FC<pageProps> = () => {
+  const [color, setColor] = useState("#000");
   const { canvasRef, onMouseDown } = useDraw(drawLine);
   function drawLine({ currentPoint, prevPoint, ctx }: Draw) {
     const { x: currX, y: currY } = currentPoint;
-    const lineColor = "#000";
+    const lineColor = color;
     const lineWidth = 3;
     let startPoint = prevPoint ?? currentPoint;
     ctx.beginPath;
@@ -24,6 +25,7 @@ const page: FC<pageProps> = () => {
   }
   return (
     <div className="w-screen h-screen bg-white flex justify-center items-center">
+      <ChromePicker color={color} onChange={(e) => setColor(e.hex)} />
       <canvas
         height={550}
         width={550}
