@@ -4,7 +4,6 @@ export const useDraw=(onDraw:({ctx,currentPoint,prevPoint}:Draw)=>void)=>{
     const[mouseDown,setMouseDown]=useState(false)
     const canvasRef=useRef<HTMLCanvasElement>(null)
     const prevPoint=useRef<null | Point>(null)
-    console.log(mouseDown);
     
     const onMouseDown=()=>setMouseDown(true)
     const clearCanvas = () => {
