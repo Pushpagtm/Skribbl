@@ -6,13 +6,16 @@ interface pageProps {}
 
 const page: FC<pageProps> = () => {
   const [color, setColor] = useState("#000");
+  const [brushSize, setBrushSize] = useState(3);
   const { canvasRef, onMouseDown, clearCanvas } = useDraw(drawLine);
   function drawLine({ currentPoint, prevPoint, ctx }: Draw) {
     const { x: currX, y: currY } = currentPoint;
     const lineColor = color;
-    const lineWidth = 3;
+    // const lineWidth = 3;
+    const lineWidth = brushSize;
     let startPoint = prevPoint ?? currentPoint;
-    ctx.beginPath;
+    // ctx.beginPath;
+    ctx.beginPath();
     ctx.lineWidth = lineWidth;
     ctx.strokeStyle = lineColor;
     ctx.moveTo(startPoint.x, startPoint.y);
@@ -28,6 +31,17 @@ const page: FC<pageProps> = () => {
       <div className="w-screen h-screen bg-white flex justify-center items-center gap-2">
         <div className="flex flex-col gap-2">
           <ChromePicker color={color} onChange={(e) => setColor(e.hex)} />
+          <label htmlFor="brushSize" className="text-black">
+            Brush Size:
+          </label>
+          <input
+            type="range"
+            id="brushSize"
+            min={1}
+            max={10}
+            value={brushSize}
+            onChange={(e) => setBrushSize(Number(e.target.value))}
+          />
           <button
             onClick={clearCanvas}
             className="bg-purple-400 border-black rounded-md"
