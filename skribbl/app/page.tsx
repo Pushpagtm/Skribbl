@@ -2,6 +2,7 @@
 import { useDraw } from "@/hooks/useDraw";
 import { FC, useState } from "react";
 import { ChromePicker } from "react-color";
+import { FaPencilAlt } from "react-icons/fa";
 interface pageProps {}
 
 const page: FC<pageProps> = () => {
@@ -32,7 +33,7 @@ const page: FC<pageProps> = () => {
         <div className="flex flex-col gap-2">
           <ChromePicker color={color} onChange={(e) => setColor(e.hex)} />
           <label htmlFor="brushSize" className="text-black">
-            Brush Size:
+            Brush Size:{brushSize}
           </label>
           <input
             type="range"
@@ -42,6 +43,7 @@ const page: FC<pageProps> = () => {
             value={brushSize}
             onChange={(e) => setBrushSize(Number(e.target.value))}
           />
+
           <button
             onClick={clearCanvas}
             className="bg-purple-400 border-black rounded-md"
@@ -55,6 +57,7 @@ const page: FC<pageProps> = () => {
           className="border border-black rounded-md"
           ref={canvasRef}
           onMouseDown={onMouseDown}
+          style={{ cursor: FaPencilAlt() }}
         />
       </div>
     </>
