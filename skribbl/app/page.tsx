@@ -24,13 +24,13 @@ const page: FC<pageProps> = () => {
     ctx.stroke();
     ctx.fillStyle = lineColor;
     ctx.beginPath();
-    // ctx.arc(startPoint.x, startPoint.y, 2, 0, 2 * Math.PI);
     ctx.fill();
   }
   return (
     <>
       <div className="w-screen h-screen bg-white flex justify-center items-center gap-2">
         <div className="flex flex-col gap-2">
+          <h1 className="text-black">Color Palate</h1>
           <ChromePicker color={color} onChange={(e) => setColor(e.hex)} />
           <label htmlFor="brushSize" className="text-black">
             Brush Size:{brushSize}
