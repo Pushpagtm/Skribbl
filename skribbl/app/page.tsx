@@ -12,10 +12,8 @@ const page: FC<pageProps> = () => {
   function drawLine({ currentPoint, prevPoint, ctx }: Draw) {
     const { x: currX, y: currY } = currentPoint;
     const lineColor = color;
-    // const lineWidth = 3;
     const lineWidth = brushSize;
     let startPoint = prevPoint ?? currentPoint;
-    // ctx.beginPath;
     ctx.beginPath();
     ctx.lineWidth = lineWidth;
     ctx.strokeStyle = lineColor;
