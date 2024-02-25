@@ -24,6 +24,16 @@ const page: FC<pageProps> = () => {
     ctx.beginPath();
     ctx.fill();
   }
+  function downloadCanvas() {
+    if (canvasRef.current) {
+      const link = document.createElement("a");
+      link.download = "canvas_drawing.png";
+      link.href = canvasRef.current.toDataURL("image/png");
+      link.click();
+    } else {
+      console.error("Canvas reference is not yet available.");
+    }
+  }
   return (
     <>
       <div className="w-screen h-screen bg-white flex justify-center items-center gap-2">
@@ -49,7 +59,7 @@ const page: FC<pageProps> = () => {
             Clear Canvas
           </button>
           <button
-            onClick={clearCanvas}
+            onClick={downloadCanvas}
             className="bg-purple-400 border-black rounded-md"
           >
             Download
