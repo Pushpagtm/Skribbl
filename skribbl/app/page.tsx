@@ -5,7 +5,7 @@ import { ChromePicker } from "react-color";
 import { FaPencilAlt } from "react-icons/fa";
 interface pageProps {}
 
-const page: FC<pageProps> = () => {
+const Page: FC<pageProps> = () => {
   const [color, setColor] = useState("#000");
   const [brushSize, setBrushSize] = useState(3);
   const { canvasRef, onMouseDown, clearCanvas } = useDraw(drawLine);
@@ -78,4 +78,4 @@ const page: FC<pageProps> = () => {
   );
 };
 
-export default page;
+export default Page;
