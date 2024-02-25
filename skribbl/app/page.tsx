@@ -48,6 +48,12 @@ const page: FC<pageProps> = () => {
           >
             Clear Canvas
           </button>
+          <button
+            onClick={clearCanvas}
+            className="bg-purple-400 border-black rounded-md"
+          >
+            Download
+          </button>
         </div>
         <canvas
           height={450}
